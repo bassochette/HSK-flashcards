@@ -1,3 +1,3 @@
 export const config = {
-  apiUrl: process.env.API_URL || "http://localhost:5000"
+    apiUrl: "http://app-048439fc-ca17-4a56-88d7-d120de91246d.cleverapps.io"
 };
