@@ -1,20 +1,48 @@
-import '../App.sass'
-// import App from 'next/app'
+import { useState } from "react";
+import {
+  QuizzContext,
+  quizzContextDefaultValue
+} from "../context/quizzContext";
+import "../App.sass";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function HskApp({ Component, pageProps }) {
+  // Maybe useReducer would make more sens than the context API
+  const [level, setLevel] = useState(quizzContextDefaultValue.level);
+  const [difficulty, setDifficulty] = useState(
+    quizzContextDefaultValue.difficulty
+  );
+  const [questionCount, setQuestionCount] = useState(
+    quizzContextDefaultValue.questionCount
+  );
+  const [errorCount, setErrorCount] = useState(
+    quizzContextDefaultValue.errorCount
+  );
+  const [questionLoading, setQuestionLoading] = useState(
+    quizzContextDefaultValue.questionLoading
+  );
+  const [currentQuestion, setCurrentQuestion] = useState(
+    quizzContextDefaultValue.currentQuestion
+  );
+  const state = {
+    level,
+    setLevel,
+    difficulty,
+    setDifficulty,
+    resetDifficulty: () => setDifficulty(0),
+    questionCount,
+    incrementQuestionCount: () => setQuestionCount(questionCount + 1),
+    errorCount,
+    incrementErrorCount: () => setErrorCount(errorCount + 1),
+    questionLoading,
+    setQuestionLoading,
+    currentQuestion,
+    setCurrentQuestion
+  };
+  return (
+    <QuizzContext.Provider value={state}>
+      <Component {...pageProps} />
+    </QuizzContext.Provider>
+  );
 }
 
-// Only uncomment this method if you have blocking data requirements for
-// every single page in your application. This disables the ability to
-// perform automatic static optimization, causing every page in your app to
-// be server-side rendered.
-//
-// MyApp.getInitialProps = async (appContext) => {
-//   // calls page's `getInitialProps` and fills `appProps.pageProps`
-//   const appProps = await App.getInitialProps(appContext);
-//
-//   return { ...appProps }
-// }
-
-export default MyApp
+export default HskApp;

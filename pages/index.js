@@ -1,10 +1,11 @@
-import Head from 'next/head'
+import { QuizzSelector } from "../components/QuizzSelector";
+import { Quizz } from "../components/Quizz";
 
 const Home = () => (
   <div className="container">
-    <h1 className="title is-1"> HSK training </h1> 
-    <input className="input" />
+    <QuizzSelector />
+    <Quizz />
   </div>
-)
+);
 
-export default Home
+export default Home;

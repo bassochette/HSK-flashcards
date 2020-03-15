@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "format": "prettier --write './**/*.js'"
   },
   "dependencies": {
     "bulma": "^0.8.0",
@@ -14,5 +15,9 @@
     "node-sass": "^4.13.1",
     "react": "16.13.0",
     "react-dom": "16.13.0"
+  },
+  "devDependencies": {
+    "axios": "^0.19.2",
+    "prettier": "^1.19.1"
   }
 }
